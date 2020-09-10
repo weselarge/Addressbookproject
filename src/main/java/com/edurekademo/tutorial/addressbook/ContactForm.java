@@ -23,11 +23,11 @@ import com.vaadin.v7.ui.TextField;
  */
 public class ContactForm extends FormLayout {
 
-    Button save = new Button("Submit", this::save);
+    Button save = new Button("Save", this::save);
     Button cancel = new Button("Cancel", this::cancel);
     TextField firstName = new TextField("First name");
     TextField lastName = new TextField("Last name");
-    TextField phone = new TextField("Phone");
+    TextField phone = new TextField("Telephone");
     TextField email = new TextField("Email");
     DateField birthDate = new DateField("Birth date");
 
