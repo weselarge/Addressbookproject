@@ -15,6 +15,6 @@ pipeline {
           sh "scp target/*.war ansadmin@50.17.63.230:/home/ansadmin/tomcat/webapps"
       }
     }  
-    
   }
+}
 }
