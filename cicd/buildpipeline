@@ -9,5 +9,14 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('Deploy') {
+            steps {
+                sshagent(['techports_jenkins']) {
+    // scp <src_dir> user@tomcatIP:/tomcat/webapps
+    sh "scp -o StrictHostKeyChecking=no target/*.war techports@184.73.81.215:/home/techports/tomcat/webapps"
+}
+            }
+        }
+        
     }
 }
