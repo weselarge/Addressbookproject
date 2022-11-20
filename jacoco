@@ -1,0 +1,22 @@
+pipeline {
+  agent any
+  tools {
+    maven 'mymaven' 
+  }
+  stages {
+    stage ('Scan and Build') {
+      steps {
+      withSonarQubeEnv(installationName: 'mysonar', credentialsId: 'squ_86593b6bc2ef737ff327e84accaeb6e7448b672a') {
+        sh 'mvn clean package sonar:sonar'
+      }
+    }
+    }
+   stage ('deploy') {
+      steps {
+        sshagent(['ansadmin_jenkins']) {
+          sh "scp target/*.war ansadmin@50.19.153.249:/home/ansadmin/tomcat/webapps"
+      }
+    }  
+  }
+}
+}
