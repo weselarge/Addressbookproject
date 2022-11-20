@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage ('Scan and Build') {
       steps {
-      withSonarQubeEnv(installationName: 'sonar', credentialsId: 'jenkins-sonar') {
+      withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonar-jen') {
         sh 'mvn clean package sonar:sonar'
       }
     }
