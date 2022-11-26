@@ -1,0 +1,15 @@
+pipeline {
+  agent any
+  tools {
+    maven 'mymaven' 
+  }
+  stages {
+   stage ('Scan and Build') {
+      steps {
+      withSonarQubeEnv(installationName: 'mysonarqube', credentialsId: 'sonarqube token') {
+        sh 'mvn clean package sonar:sonar'
+      }
+    }
+    }
+  }
+}
