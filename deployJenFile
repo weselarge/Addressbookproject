@@ -12,7 +12,7 @@ pipeline {
     stage ('Deploy') {
       steps {
         sshagent(['jenkins_techports']) {
-          sh "scp -o StrictHostKeyChecking=no target/*.war techports@54.161.153.33:8080:/home/techports/tomcat/webapps" 
+          sh "scp -o StrictHostKeyChecking=no target/*.war techports@54.161.153.33:/home/techports/tomcat/webapps" 
 }
       }
     }
